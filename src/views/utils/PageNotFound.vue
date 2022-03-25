@@ -1,12 +1,10 @@
 <template>
-<div>
-  <p>countries</p>
-</div>
+<div><p>Oops Page Not found</p></div>
 </template>
 
 <script>
 export default {
-  name: "CountriesList"
+  name: "PageNotFound"
 }
 </script>
 
