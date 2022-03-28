@@ -1,11 +1,11 @@
 <template>
-  <table class="w-full whitespace-no-wrap">
+  <table class="w-full whitespace-no-wrap mt-4 border ">
     <thead>
-    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-      <th v-for="(index, title) in table_titles" :key="index" class="px-4 py-3">{{title}}</th>
+    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b  bg-gray-50 ">
+      <th v-for="(title, index) in table_titles" :key="index" class="px-4 py-3">{{title}}</th>
     </tr>
     </thead>
-    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+    <tbody class="bg-white divide-y">
     <slot>
 
     </slot>
@@ -20,8 +20,6 @@ export default {
     table_titles: {type:Array, default:()=>{return [
         'title1', 'title2'
       ]}},
-    table_data: {type: Array, default:()=>{
-      return [ ]}}
   },
 }
 </script>
