@@ -3,7 +3,8 @@ import api from "@/api";
 export const login = {
     state: {
         user: {},
-        error:{}
+        error:{},
+        showSideBar:false,
     },
     getters: {
         getUser(state) {
@@ -31,6 +32,7 @@ export const login = {
         }
     },
     mutations: {
+        setSideBarView: (state, showSideBar) => (state.showSideBar = showSideBar),
         setUser: (state, user)=>(state.user= user),
         setError: (state, err)=>(state.error = err)
     },
