@@ -12,6 +12,9 @@ export const login = {
         },
         getError(state) {
             return state.error
+        },
+        getSideBarState(state){
+            return state.showSideBar
         }
     },
     actions: {
@@ -19,9 +22,16 @@ export const login = {
             return new Promise((resolve, reject)=>{
                 api.post('/auth/login/', payload).then(resp=>{
                     commit('setUser', resp.data.user)
-                    localStorage.setItem('token', resp.data.token)
-                    localStorage.setItem('user', resp.data.user)
-                    localStorage.setItem('refresh', resp.data.refreshToken)
+                    console.log("rk", resp.data.data.token)
+                    localStorage.setItem('token', resp.data.data.token)
+                    localStorage.setItem('username', resp.data.data.user.username)
+                    localStorage.setItem('user_id', resp.data.data.user.id)
+                    localStorage.setItem('firstName', resp.data.data.user.firstName)
+                    localStorage.setItem('lastName', resp.data.data.user.lastName)
+                    localStorage.setItem('dateOfBirth', resp.data.data.user.dateOfBirth)
+                    localStorage.setItem('avatar', resp.data.data.user.avatar)
+                    localStorage.setItem('refresh', resp.data.data.refreshToken)
+                    localStorage.setItem('permissions', resp.data.data.user.permissions.toString())
                     commit('setError', {})
                     resolve(resp.data)
                 }).catch(err=>{
