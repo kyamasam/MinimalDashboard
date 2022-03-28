@@ -25,7 +25,15 @@ export default {
         if (err.response.status === 401) {
           localStorage.removeItem('token')
           delete axios.defaults.headers.common['Authorization']
-          router.push('/')
+          axios.post(api_url+'/auth/refresh-token',{'refreshToken': localStorage.getItem('refresh'), 'clientType':'mobile'}).then(resp=>{
+            localStorage.setItem('refresh', resp.data.data.refreshToken)
+            localStorage.setItem('token', resp.data.data.token)
+            // reload the page to make sure that requests are repeated
+            window.location.reload()
+          }).catch((err)=>{
+            store.commit('setError', {status:err.response.status, data: err.response.data})
+            window.location.replace('/')
+          })
         }
         throw err;
       });
