@@ -7,8 +7,10 @@
 <script>
 
 import api from "@/api";
-import router from "@/router";
 import axios from "axios";
+import {api_url} from "@/utils/constants";
+import store from "./store/index";
+
 
 export default {
   name: 'App',
@@ -18,6 +20,8 @@ export default {
     //check if user is logged in
     api.interceptors.request.use((config) => {
       config.headers.Authorization = 'Bearer ' + localStorage.getItem('token');
+      // remove all error messages
+      store.commit('setError', {})
       return config;
     });
     api.interceptors.response.use( undefined, function (err) {
