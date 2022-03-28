@@ -1,13 +1,13 @@
 <template>
   <div class="flex flex-col justify-center items-center bg-malachite-100 w-full h-screen">
-    <div class="flex flex-col justify-center justify-center border p-4 bg-white rounded-md shadow  w-1/3 space-y-4">
+    <div class="flex flex-col justify-center justify-center border p-4 bg-white rounded-md shadow w-2/3 md:w-1/3 space-y-4">
       <div v-if="loading" class="flex flex-row items-center justify-center">
         loading ...
       </div>
       <p v-if="success" class="text-malachite-500 font-bold">Operation Success</p>
 
       <div class="flex flex-col items-center justify-center">
-        <div class="text-malachite-500" v-html="app_settings.project_logo"></div>
+        <div class="text-red-500" v-html="app_settings.project_logo"></div>
         <p class="font-bold p-4 text-capitalize text-malachite-500">{{app_settings.project_name}}</p>
       </div>
 
@@ -48,8 +48,8 @@ export default {
     return {
       app_settings:app_settings,
       loading:false,
-      username:'',
-      password:'',
+      username:'frogman',
+      password:'123456',
       success:false
     }
   },
